@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->string('nim')->unique();;
-            $table->string('nama');
-            $table->string('password');
-            $table->string('prodi');
-            $table->enum('role', ['admin', 'responden'])->default('responden');
-            $table->rememberToken();
+            $table->bigInteger('id_user');
+            $table->bigInteger('id_survey');
+            $table->bigInteger('id_question');
+            $table->bigInteger('selected_options');
+            $table->text('content');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('answers');
     }
 };
