@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Login | TRACER STUDY </title>
     @vite('resources/css/app.css')
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -55,8 +55,8 @@
           </div>
           <div class="w-full mt-14 pb-20 flex flex-col gap-y-8 justify-center items-center">
             <div  id="title-login">
-              <h2 class="font-semibold text-xl text-center uppercase lg:text-2xl">Tracer Study</h2>
-              <h2 class="font-semibold text-xl text-center uppercase lg:text-2xl"><span class="text-main tracking-wider">UNIMED</span> </h2>
+            <h2 class="font-semibold text-xl text-center uppercase lg:text-2xl">LOGIN AKUN</h2>
+              <h2 class="font-semibold text-xl text-center uppercase lg:text-2xl"><span class="text-main tracking-wider">Tracer Study UNIMED</span> </h2>
 
             </div>
             <div id="form" class="md:w-[60%]">
@@ -97,35 +97,18 @@
                 <button
                   id="submit"
                   type="submit"
-                  disabled
-                  class=" cursor-not-allowed px-4 py-2  mt-8 w-full text-base font-semibold  bg-emerald-400 rounded-md border-none text-white btn-flash  after:rounded-md after:hover:w-full"
+                  class="px-4 py-2  mt-8 w-full text-base font-semibold  bg-emerald-400 rounded-md border-none text-white btn-flash"
                 >
                   Login
                 </button>
               </form>
+              <br>
+              <p>Belum punya akun ? <a class="underline" href="/register">REGISTER</a></p>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- <script src="assets/js/form-validation.js"></script> -->
-    <script type="module">
-      import validation from "/assets/js/form-validation.js";
-      const username = document.getElementById("username");
-      const usernameMessage = document.getElementById("usernameMessage");
-      const username1 = document.getElementById("username2");
-      const btnSubmit = document.getElementById("submit");
-
-      validation(
-        username,
-        usernameMessage,
-        "Your email must included @",
-        (e) => e.includes("@") ? true:false
-      );
-      if(validation){
-        console.log("true")
-      }else console.log("false");
-    </script>
     
   </body>
 </html>
