@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,17 +17,49 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    
 });
 
-Route::get('/login', function(){
-    return view('login');
+Route::group([
+    'prefix' => 'user',
+    'as' => 'user.',
+    'middleware' => ['auth'],
+],function () {
+    Route::get('/', function () {
+        return view('index');
+    })->name('dashboard');
+    
+    Route::get('/logout', function(Request $request){
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    })->name('logout');
 });
 
-Route::get('/loading', function(){
-    return view('loading');
+Route::group([
+    'prefix' => 'admin',
+    'as' => 'admin.',
+    'middleware' => ['auth','isAdmin'],
+],function () {
+    Route::get('/', function () {
+        return view('index');
+    })->name('dashboard');
+
+    Route::get('/logout', function(Request $request){
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    })->name('logout');
 });
 
-Route::get('/register', function(){
-    return view('register');
+
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('plogin');
+
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('pregister');
+
+Route::get('/', function(){
+    return redirect()->route('login');
 });
