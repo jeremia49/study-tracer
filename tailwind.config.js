@@ -29,6 +29,7 @@ module.exports = {
         primary: { "50": "#eff6ff", "100": "#dbeafe", "200": "#bfdbfe", "300": "#93c5fd", "400": "#60a5fa", "500": "#3b82f6", "600": "#2563eb", "700": "#1d4ed8", "800": "#1e40af", "900": "#1e3a8a" },
         "page-login":"#f5f8fa",
         "main":'#0499b3',
+        "borderForm":"#10b981"
         // "bg-dot":""
       },
       fontFamily: {
@@ -45,7 +46,8 @@ module.exports = {
         'kanban': '28rem'
       },
       animation:{
-        'custom-ping':'load 1s ease-out infinite'
+        'custom-ping':'load 1s ease-out infinite',
+        'fadeUp':"fadeUp 450ms ease-in-out"
       },
       keyframes:{
         load:{
@@ -62,6 +64,14 @@ module.exports = {
             broder:'0px solid #fff'
           }
 
+        },
+        fadeUp:{
+            "0%":{
+              transform: 'translateY(-200px) scale(0)',
+            },
+            "100%":{
+              transform:"translateY(0)",
+            }
         }
       }
     },

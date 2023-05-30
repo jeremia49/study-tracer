@@ -21,4 +21,7 @@ class AdminController extends Controller
     public function surveyPage(){
         return view('admin.survey');
     }
+    public function questionsPage(){
+        return view("admin.questions");
+    }
 }

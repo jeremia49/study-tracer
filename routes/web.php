@@ -39,6 +39,7 @@ Route::group([
 ],function () {
     Route::get('/', [AdminController::class, 'dashboardPage'])->name('dashboard');
     Route::get('/survey', [AdminController::class, 'surveyPage'])->name('survey');
+    Route::get('/question', [AdminController::class, 'questionsPage'])->name('questions');
     
     Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 });
