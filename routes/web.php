@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -25,15 +27,9 @@ Route::group([
     'as' => 'user.',
     'middleware' => ['auth'],
 ],function () {
-    Route::get('/', function () {
-        return view('index');
-    })->name('dashboard');
-    
-    Route::get('/logout', function(Request $request){
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/');
-    })->name('logout');
+    Route::get('/', [UserController::class, 'dashboardPage'])->name('dashboard');
+
+    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 });
 
 Route::group([
@@ -41,15 +37,10 @@ Route::group([
     'as' => 'admin.',
     'middleware' => ['auth','isAdmin'],
 ],function () {
-    Route::get('/', function () {
-        return view('index');
-    })->name('dashboard');
-
-    Route::get('/logout', function(Request $request){
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/');
-    })->name('logout');
+    Route::get('/', [AdminController::class, 'dashboardPage'])->name('dashboard');
+    Route::get('/survey', [AdminController::class, 'surveyPage'])->name('survey');
+    
+    Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 });
 
 

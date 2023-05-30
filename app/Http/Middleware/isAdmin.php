@@ -15,7 +15,7 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!auth()->check() || !auth()->user()->role !== "admin"){
+        if(!auth()->check() || auth()->user()->role !== "admin"){
             return abort(403,'Admin role needed to access this feature');
         }
         return $next($request);
