@@ -5,14 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description"
-        content="Get started with a free and open-source admin dashboard layout built with Tailwind CSS and Flowbite featuring charts, widgets, CRUD layouts, authentication pages, and more" />
-    <meta name="author" content="Themesberg" />
-    <meta name="generator" content="Hugo 0.58.2" />
+        content="Halaman Admin Study Tracer" />
+    <meta name="author" content="Tim SPK Unimed" />
+    <meta name="generator" content="" />
 
     @hasSection('title')
         <title>@yield('title')</title>
     @endif
-
+    <link rel="icon" type="image/png" href="/img/icon-unimed.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"

@@ -5,7 +5,7 @@
 @extends('admin.template')
 
 @section('title')
-    Survey | Study Tracer
+    Questions | Study Tracer
 @endsection
 
 
