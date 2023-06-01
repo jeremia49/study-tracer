@@ -63,11 +63,11 @@
                     <!-- for dark mode -->
                     <button id="theme-toggle" data-tooltip-target="tooltip-toggle" type="button"
                         class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
-                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 animate-[spin_450ms_ease-in-out]" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                         </svg>
-                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 animate-[spin_450ms_ease-in-out] text-white" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
@@ -118,7 +118,7 @@
     
     @include('user.menu')
 
-    <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
+    <div id="main-content" class="grid grid-cols-1 content-between relative w-full h-[90vh] overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
         <main>
             <div class="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
                 <div class="mb-4 col-span-full xl:mb-2">
@@ -210,16 +210,54 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="pages">
+                                <h3 class="mb-4 text-xl font-semibold dark:text-white">
+                                    Address
+                                </h3>
+                                <div class="grid grid-cols-6 gap-6">
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="first-name1"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
+                                            Name</label>
+                                        <input type="text" name="first-name1" id="first-name1"
+                                            class="style-input bg-gray-50" placeholder="Bonnie" />
+                                    </div>
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="last-name1"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
+                                            Name</label>
+                                        <input type="text" name="last-name1" id="last-name1"
+                                            class="style-input bg-gray-50" placeholder="Green" />
+                                    </div>
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="country1"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
+                                        <input type="text" name="country1" id="country1"
+                                            class="style-input bg-gray-50" placeholder="United States" />
+                                    </div>
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="city1"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
+                                        <input type="text" name="city1" id="city1"
+                                            class="style-input bg-gray-50" placeholder="e.g. San Francisco" />
+                                    </div>
+                                </div>
+                            </div>
                             <div class="collect-btn sm:col-full">
                                 <a id="btnPrevious" onclick="nextPreview(-1,event)"
-                                    class="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800">
+                                    class="text-white bg-slate-700 cursor-pointer hover:bg-slate-800 focus:ring-4 focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800">
                                     Previous
                                 </a>
                                 <a id="btnNext" href="www.google.com" onclick="nextPreview(1,event)"
                                     class="cursor-pointer text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                     Next
                                 </a>
-                                <button id="btnSubmit" onclick="nextPreview(0,event)"
+                                <button id="btnChecked" onclick="nextPreview(0,event)"
+                                    class=" text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                                    type="submit">
+                                    checked
+                                </button>
+                                <button id="btnSubmit"
                                     class=" text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                                     type="submit">
                                     Submit
@@ -303,158 +341,7 @@
     <script src="/js/sidebar.js"></script>
     <script src="/js/dark-mode.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/datepicker.min.js"></script>
-    <script></script>
-    <script>
-        // import Validation from "./assets/js/form-validation.js";
-        // run this function built dot pagination
-        (() => {
-            // get length pages
-            const n = document.getElementsByClassName("pages").length;
-            const containerDPagination = document.getElementById("dotPaginate");
-            // create dot-pagination as much n
-            for (let i = 0; i < n; i++) {
-                const createLi = document.createElement("li");
-                // createLi.class
-                const createSpan = document.createElement("span");
-                createLi.appendChild(createSpan);
-                // push to containerPagination
-                containerDPagination.appendChild(createLi);
-            }
-        })();
-
-        let currentTab = 0;
-        let validateInput = {};
-        showTab(currentTab);
-
-        function nextPreview(n, e) {
-
-            e.preventDefault();
-            // this.preventDefault();
-            // chcek valadate when got error
-            const pages = document.getElementsByClassName("pages");
-            if ((n === 1 || n === 0) && !validationForms()) return false;
-
-            pages[currentTab].style.display = "none";
-            currentTab += n;
-            showTab(currentTab);
-
-        }
-
-        function showTab(currentIndex) {
-            // get elements
-            const getPages = document.getElementsByClassName("pages");
-            const btnPrevious = document.getElementById("btnPrevious");
-            const btnNext = document.getElementById("btnNext");
-            const btnSubmit = document.getElementById("btnSubmit");
-
-
-            // handle show page
-            getPages[currentIndex].style.display = "block";
-            // add validaton for each pages
-            // handle show btn prev or next
-            currentIndex === 0 ?
-                (btnPrevious.style.display = "none") :
-                (btnPrevious.style.display = "block");
-            // handle submit or next
-
-            if (currentIndex === getPages.length - 1) {
-                btnSubmit.style.display = "block";
-                btnNext.style.display = "none";
-            } else {
-                btnNext.style.display = "block";
-                btnSubmit.style.display = "none";
-
-            }
-            getFormPage(getPages[currentIndex]);
-            fixInStepIndicator(currentIndex);
-        }
-
-        function getFormPage(sectionForm) {
-            const forms = sectionForm.getElementsByTagName("input");
-            //  added for default check value
-            const defaultValidate = (e) => e.trim().length > 2;
-            // loop all object forms
-            for (const form of forms) {
-                // create validate
-                validateInput[form.getAttribute("id")] = defaultValidate;
-                // createElementSpan and added message error
-                const newSpan = createElementSpan(form, "afterend");
-                addedEventAndMessage(form, newSpan)
-
-            }
-        }
-
-        function addedEventAndMessage(inputForm, PlaceMessage, message = "character must more than  2") {
-            const cleanInput = inputForm.value.trim();
-            inputForm.addEventListener("keyup", delay(function(e) {
-                const validate = validateInput[inputForm.getAttribute("id")](e.target.value);
-                if (validate) {
-                    e.target.setAttribute("class", "style-input bg-gray-50 bg-gray-50");
-                    PlaceMessage.classList.add("hidden");
-                } else {
-
-                    e.target.classList.add("input-error");
-                    PlaceMessage.classList.remove("hidden");
-                    PlaceMessage.innerHTML = message;
-                }
-            }, 500));
-        }
-
-        function delay(callback, ms) {
-            var timer = 0;
-            return function() {
-                var context = this,
-                    args = arguments;
-                clearTimeout(timer);
-                timer = setTimeout(function() {
-                    callback.apply(context, args);
-                }, ms || 0);
-            };
-        }
-
-        function validationForms() {
-            // get tab of page
-            const tab = document.getElementsByClassName("pages")[currentTab];
-            const inputs = tab.getElementsByTagName("input");
-            // this variable using for result validate
-            let result = true;
-            // loop trought input
-            for (const input of inputs) {
-                const checkInput = validateInput[input.getAttribute('id')](input.value);
-                if (!checkInput) {
-                    input.classList.add('input-error');
-                    result = false;
-                }
-            }
-            // step dot done
-            if (result) {
-                const containerDPagination = document.getElementById("dotPaginate");
-                containerDPagination.getElementsByTagName("li")[currentTab].classList.add("done");
-            }
-            return result;
-        }
-
-        function createElementSpan(element, position) {
-            const createSpan = document.createElement("span");
-            createSpan.classList.add("d-message-error");
-            createSpan.classList.add("hidden");
-            // create id with addtional the begining text
-            createSpan.setAttribute("id", `me-${element.getAttribute("id")}`);
-            return element.insertAdjacentElement(position, createSpan);
-        }
-
-        function fixInStepIndicator(currentStep) {
-            // get element li at the container ul
-            const containerStep = document.getElementById("dotPaginate");
-            const allStep = containerStep.getElementsByTagName("li");
-            // get data as object
-            for (let i = 0; i < allStep.length; i++) {
-                allStep[i].classList.remove("active");
-            }
-            // after fix all active to none set which current active
-            allStep[currentStep].classList.add("active");
-        }
-    </script>
+    <script src="/js/formPerpage.js"></script>
 </body>
 
 </html>

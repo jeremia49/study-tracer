@@ -31,6 +31,10 @@ class AdminController extends Controller
             'is_active' => ['required', 'in: 0,1'],
         ]);
         dd($validated);
-
     }
+
+    public function questionsPage(){
+        return view("admin.questions");
+    }
+
 }
