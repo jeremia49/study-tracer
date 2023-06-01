@@ -19,8 +19,27 @@
             </div>
             <!-- Right Content -->
             <div class="col-span-full">
+                @if (session('success'))
+                    <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+                        role="alert">
+                        <span class="font-medium">{{ session('success') }}</span>
+                    </div>
+                @endif
+
+                @if (session('error'))
+                    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                        role="alert">
+                        <span class="font-medium">{{ session('error') }}</span>
+                    </div>
+                @endif
 
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <button type="button" data-modal-target="newSurveyModal" data-modal-toggle="newSurveyModal"
+                        class="float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Buat
+                        Survey Baru</button>
+
+                    <br>
+
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
@@ -42,55 +61,57 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Apple MacBook Pro 17"
-                                </th>
-                                <td class="px-6 py-4">
-                                    Silver
-                                </td>
-                                <td class="px-6 py-4">
-                                    Laptop
-                                </td>
-                                <td class="px-6 py-4">
-                                    $2999
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="#"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                    <a href="#"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Hapus</a>
+                            @foreach ($surveys as $survey)
+                                @if ($loop->odd)
+                                    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {{ $survey->nama }}
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            {{ $survey->periode }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ count(json_decode($survey->questions)) }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $survey->is_active == '1' ? 'Aktif' : 'Tidak Aktif' }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <a href="{{ route('admin.surveyedit', ['id' => $survey->id]) }}"
+                                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">Edit</a>
+                                            <a onclick="window.confirm('Apakah anda yakin ingin menghapus?')? window.location.href = '{{ route('admin.deleteSurvey', ['id' => $survey->id]) }}' : ''"
+                                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">Hapus</a>
+                                        </td>
+                                    </tr>
+                                @else
+                                    <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {{ $survey->nama }}
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            {{ $survey->periode }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ count(json_decode($survey->questions)) }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $survey->is_active == '1' ? 'Aktif' : 'Tidak Aktif' }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <a href="{{ route('admin.surveyedit', ['id' => $survey->id]) }}"
+                                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">Edit</a>
+                                            <a onclick="window.confirm('Apakah anda yakin ingin menghapus?')? window.location.href = '{{ route('admin.deleteSurvey', ['id' => $survey->id]) }}' : ''"
+                                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">Hapus</a>
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
 
-                                </td>
-                            </tr>
-                            <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Microsoft Surface Pro
-                                </th>
-                                <td class="px-6 py-4">
-                                    White
-                                </td>
-                                <td class="px-6 py-4">
-                                    Laptop PC
-                                </td>
-                                <td class="px-6 py-4">
-                                    $1999
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="#"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                    <a href="#"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Hapus</a>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
-                    <br>
-                    <button type="button" data-modal-target="newSurveyModal" data-modal-toggle="newSurveyModal"
-                        class="float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Buat
-                        Survey Baru</button>
+
                 </div>
 
             </div>
@@ -121,7 +142,7 @@
                     </div>
                     <!-- Modal body -->
                     <div class="p-6 space-y-6">
-                        <form action="{{ route('login') }}" method="POST" class="w-full" autocomplete="off">
+                        <form action="{{ route('admin.createSurvey') }}" method="POST" class="w-full" autocomplete="off">
 
                             @csrf
 
@@ -129,7 +150,7 @@
                                 <label for="nama"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Survey</label>
                                 <input type="text" id="nama" name="nama" class="style-input bg-gray-50"
-                                    placeholder="" required />
+                                    placeholder="" required value="{{ old('nama') }}" />
                                 @error('nama')
                                     <span class="text-pink-500 text-sm">
                                         {{ $message }}
@@ -142,7 +163,7 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tahun
                                     Survey</label>
                                 <input type="number" id="periode" name="periode" class="style-input bg-gray-50"
-                                    placeholder="" required />
+                                    placeholder="" required value="{{ old('periode') }}" />
                                 @error('periode')
                                     <span class="text-pink-500 text-sm">
                                         {{ $message }}
@@ -151,18 +172,18 @@
                             </div>
 
                             <div class="mt-2">
-                                <label for="status"
+                                <label for="is_active"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status
                                     Survey</label>
 
-                                <select id="status"
+                                <select id="is_active" name="is_active"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="-1">Pilih Status</option>
-                                    <option value="1">Aktif</option>
-                                    <option value="0">Tidak Aktif</option>
+                                    <option value="-1" @selected(old('is_active') == '-1')>Pilih Status</option>
+                                    <option value="1" @selected(old('is_active') == '1')>Aktif</option>
+                                    <option value="0" @selected(old('is_active') == '0')>Tidak Aktif</option>
                                 </select>
 
-                                @error('status')
+                                @error('is_active')
                                     <span class="text-pink-500 text-sm">
                                         {{ $message }}
                                     </span>
@@ -188,46 +209,16 @@
 @push('scripts')
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/datepicker.min.js"></script>
     <script src="/js/sidebar.js"></script>
     <script src="/js/dark-mode.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/datepicker.min.js"></script>
 
-    <script >
-        import {
-            Modal
-        } from 'flowbite';
-
-        window.addEventListener("load", (event) => {
-            if (!window.location.hash) {
-                return
-            }
-
-            let hash = window.location.hash.substring(1);
-            if (hash != "showNewSurveyModal") {
-                return
-            };
-
-            const $newSurveyModal = document.getElementById('newSurveyModal');
-            const options = {
-                placement: 'bottom-right',
-                backdrop: 'dynamic',
-                backdropClasses: 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40',
-                closable: true,
-                onHide: () => {
-                    console.log('modal is hidden');
-                },
-                onShow: () => {
-                    console.log('modal is shown');
-                },
-                onToggle: () => {
-                    console.log('modal has been toggled');
-                }
-            };
-
-            const modal = new Modal($targetEl, options);
-            modal.show();
-        });
+    <script>
+        var ERROR = false;
+        @if ($errors->any())
+            ERROR = true;
+        @endif
     </script>
 
-    {{--  --}}
+    @vite('resources/js/adminsurvey.js')
 @endpush

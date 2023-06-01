@@ -39,6 +39,11 @@ Route::group([
 ],function () {
     Route::get('/', [AdminController::class, 'dashboardPage'])->name('dashboard');
     Route::get('/survey', [AdminController::class, 'surveyPage'])->name('survey');
+    Route::post('/createSurvey', [AdminController::class, 'createSurvey'])->name('createSurvey');
+    Route::get('/editSurvey/{id}', [AdminController::class, 'surveyeditPage'])->name('surveyedit');
+    Route::post('/editSurvey/{id}', [AdminController::class, 'editSurvey'])->name('editSurvey');
+    Route::get('/deleteSurvey/{id}', [AdminController::class, 'deleteSurvey'])->name('deleteSurvey');
+    
     Route::get('/question', [AdminController::class, 'questionsPage'])->name('questions');
     
     Route::get('/logout', [AdminController::class, 'logout'])->name('logout');

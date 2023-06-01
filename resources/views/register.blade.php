@@ -98,8 +98,10 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fakultas</label>
                                 <select required id="fakultas" name="fakultas"
                                     class="bg-slate-200  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="0" {{ old('fakultas') == "0" ? 'selected' : ''}}>Pilih Fakultas</option>
-                                    <option value="fmipa" {{ old('fakultas') == "fmipa" ? 'selected' : ''}}>FMIPA</option>
+                                    <option value="0" {{ old('fakultas') == '0' ? 'selected' : '' }}>Pilih Fakultas
+                                    </option>
+                                    <option value="fmipa" {{ old('fakultas') == 'fmipa' ? 'selected' : '' }}>FMIPA
+                                    </option>
                                 </select>
                                 @error('fakultas')
                                     <span class="text-pink-500 text-sm">
@@ -112,8 +114,10 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jurusan</label>
                                 <select required id="jurusan" name="jurusan"
                                     class="bg-slate-200  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="0" {{ old('jurusan') == "0" ? 'selected' : ''}} >Pilih Jurusan</option>
-                                    <option value="matematika" {{ old('jurusan') == "matematika" ? 'selected' : ''}} >Matematika</option>
+                                    <option value="0" {{ old('jurusan') == '0' ? 'selected' : '' }}>Pilih Jurusan
+                                    </option>
+                                    <option value="matematika" {{ old('jurusan') == 'matematika' ? 'selected' : '' }}>
+                                        Matematika</option>
                                 </select>
                                 @error('jurusan')
                                     <span class="text-pink-500 text-sm">
@@ -127,8 +131,10 @@
                                     Studi</label>
                                 <select required id="prodi" name="prodi"
                                     class="bg-slate-200  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="0" {{ old('prodi') == "0" ? 'selected' : ''}}>Pilih Program Studi</option>
-                                    <option value="ilmu komputer" {{ old('prodi') == "ilmu komputer" ? 'selected' : ''}} >Ilmu Komputer</option>
+                                    <option value="0" {{ old('prodi') == '0' ? 'selected' : '' }}>Pilih Program
+                                        Studi</option>
+                                    <option value="ilmu komputer"
+                                        {{ old('prodi') == 'ilmu komputer' ? 'selected' : '' }}>Ilmu Komputer</option>
                                 </select>
                                 @error('prodi')
                                     <span class="text-pink-500 text-sm">
@@ -166,6 +172,16 @@
                                 Register
                             </button>
                         </form>
+                        <br>
+
+                        @if (session('error'))
+                            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                                role="alert">
+                                <span class="font-medium">ababab{{ session('error') }}</span>
+                            </div>
+                        @endif
+
+
                         <br>
                         <p>Sudah punya akun ? <a class="underline" href="/login">LOGIN</a></p>
                     </div>
