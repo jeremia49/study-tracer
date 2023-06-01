@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('surveys', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
             $table->string('periode');
             $table->string('questions');
             $table->boolean('is_active')->default(true);
