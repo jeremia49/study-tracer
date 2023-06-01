@@ -45,6 +45,13 @@ Route::group([
     Route::get('/deleteSurvey/{id}', [AdminController::class, 'deleteSurvey'])->name('deleteSurvey');
     
     Route::get('/question', [AdminController::class, 'questionsPage'])->name('questions');
+    Route::post('/createQuestion', [AdminController::class, 'createQuestion'])->name('createQuestion');
+    Route::get('/editQuestion/{id}', [AdminController::class, 'questioneditPage'])->name('questionedit');
+    Route::post('/editQuestion/{id}', [AdminController::class, 'editQuestion'])->name('editQuestion');
+    Route::get('/deleteQuestion/{id}', [AdminController::class, 'deleteQuestion'])->name('deleteQuestion');
+
+    Route::post('/editOptions/', [AdminController::class, 'editOptions'])->name('editOptions');
+    
     
     Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 });

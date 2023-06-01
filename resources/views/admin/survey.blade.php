@@ -14,7 +14,7 @@
         <div class="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
             <div class="mb-4 col-span-full xl:mb-2">
                 <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
-                    List Survey
+                    List Survei
                 </h1>
             </div>
             <!-- Right Content -->
@@ -61,7 +61,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($surveys as $survey)
+                            @forelse ($surveys as $survey)
                                 @if ($loop->odd)
                                     <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                                         <th scope="row"
@@ -154,7 +154,7 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <a href="window.confirm('Apakah anda yakin ingin menghapus?')? window.location.href = '{{ route('admin.deleteSurvey', ['id' => $survey->id]) }}' : ''"
+                                                <a href="#" onclick="window.confirm('Apakah anda yakin ingin menghapus?')? window.location.href = '{{ route('admin.deleteSurvey', ['id' => $survey->id]) }}' : ''"
                                                     data-tooltip-target="hp1" data-tooltip-trigger="hover"
                                                     class=" flex justify-center items-center w-9  h-9  font-medium   transition-all duration-300 bg-white dark:bg-gray-800  dark:border-slate-600 dark:shadow-slate-700 hover:shadow-lg box-border  rounded-lg text-red-600 dark:text-red-500 hover:underline">
                                                     <span>
@@ -175,7 +175,15 @@
                                         </td>
                                     </tr>
                                 @endif
-                            @endforeach
+                            @empty
+                                <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center"
+                                        colspan="5">
+                                        Belum ada data
+                                    </th>
+                                </tr>
+                            @endforelse
 
                         </tbody>
                     </table>

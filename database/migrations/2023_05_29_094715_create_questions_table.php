@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->text('question');
-            $table->text('options'); 
-            $table->text('options_order'); //order
-            $table->enum('type',['options', 'rate', 'text']);
+            $table->text('options');
+            $table->enum('type',['radio','radioOthers', 'checkbox','rate', 'text']); 
+            // options => checkbox / radio
             $table->boolean('is_mandatory')->default(true);
             $table->timestamps();
         });

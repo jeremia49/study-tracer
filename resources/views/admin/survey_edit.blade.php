@@ -51,7 +51,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
                                         Survey</label>
                                     <input type="text" id="nama" name="nama" class="style-input bg-gray-50"
-                                        placeholder="" required value="{{$survey->nama}}" />
+                                        placeholder="" required value="{{old('nama', $survey->nama)}}" />
                                     @error('nama')
                                         <span class="text-pink-500 text-sm">
                                             {{ $message }}
@@ -64,7 +64,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tahun
                                         Survey</label>
                                     <input type="number" id="periode" name="periode" class="style-input bg-gray-50"
-                                        placeholder="" required value="{{$survey->periode}}" />
+                                        placeholder="" required value="{{old('periode', $survey->periode)}}" />
                                     @error('periode')
                                         <span class="text-pink-500 text-sm">
                                             {{ $message }}
@@ -79,9 +79,9 @@
 
                                     <select id="is_active" name="is_active"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        <option value="-1" @selected($survey->is_active == '-1')>Pilih Status</option>
-                                        <option value="1" @selected($survey->is_active == '1')>Aktif</option>
-                                        <option value="0" @selected($survey->is_active == '0')>Tidak Aktif</option>
+                                        <option value="-1" @selected(old('is_active', $survey->is_active) == '-1')>Pilih Status</option>
+                                        <option value="1" @selected(old('is_active', $survey->is_active) == '1')>Aktif</option>
+                                        <option value="0" @selected(old('is_active', $survey->is_active) == '0')>Tidak Aktif</option>
                                     </select>
 
                                     @error('is_active')
