@@ -62,18 +62,6 @@ class UserController extends Controller
         $questions_id = json_decode($survey->questions);
         $answers = $request->collect();
 
-        // $questions = collect(Question::findMany($questions_id));
-
-        // $sortedq = [];
-        // foreach ($questions_id as $id) {
-        //     $question = $questions->first(function ($value, int $key) use ($id) {
-        //         if ($id == $value->id) {
-        //             return true;
-        //         }
-        //     });
-        //     array_push($sortedq, $question);
-        // }
-
         $submission = SubmitHistory::create([
             'id_user' => auth()->user()->id,
             'id_survey' => $survey->id,
@@ -90,17 +78,20 @@ class UserController extends Controller
                 'id_submit' => $submission->id,
                 'id_survey' => $survey->id,
                 'id_question' => $id,
-                'content' => $answers['ans'.$id],
+                'content' => $answers['ans' . $id],
             ];
             array_push($answerdata, $data);
         }
 
         $check = Answer::insert($answerdata);
-        if($check){
-            return redirect()->route('user.survey')->with('success','Jawaban anda telah disimpan, terimakasih');
+        if ($check) {
+            return redirect()
+                ->route('user.survey')
+                ->with('success', 'Jawaban anda telah disimpan, terimakasih');
         }
         return redirect()
-                ->back()
-                ->with('error', 'Gagal mensubmit jawaban');
+            ->back()
+            ->with('error', 'Gagal mensubmit jawaban');
     }
+
 }

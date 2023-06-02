@@ -57,6 +57,10 @@ Route::group([
 
     Route::post('/editOptions/', [AdminController::class, 'editOptions'])->name('editOptions');
     
+    Route::get('/submissionsPage/{id}', [AdminController::class, 'submissionsPage'])->name('submissions');
+    Route::get('/answers/{id}', [AdminController::class, 'answerPage'])->name('answers');
+    
+    
     Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 });
 

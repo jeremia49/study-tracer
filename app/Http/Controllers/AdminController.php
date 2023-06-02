@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\Question;
+use App\Models\SubmitHistory;
 use App\Models\Survey;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -187,6 +190,53 @@ class AdminController extends Controller
         return redirect()->back()->with('error','Something is Wrong');
 
     }
+
+    public function submissionsPage(int $id)
+    {
+        $survey = Survey::find($id);
+        $submissions = SubmitHistory::where('id_survey', $survey->id)->get();
+        return view('admin.submissions', [
+            'submissions' => $submissions,
+            'survey'=>$survey,
+        ]);
+    }
+
+    public function answerPage(int $id)
+    {
+        $submission = SubmitHistory::find($id);
+        $survey = Survey::find($submission->id_survey);
+        $questions_id = json_decode($survey->questions);
+
+        $questions = collect(Question::findMany($questions_id));
+        $answers = collect(DB::table('answers')->where('id_submit',$submission->id)->get());
+
+        $sortedq = [];
+        $sorteda = [];
+
+        foreach ($questions_id as $id) {
+            $question = $questions->first(function ($value, int $key) use ($id) {
+                if ($id == $value->id) {
+                    return true;
+                }
+            });
+            $ans = $answers->first(function ($value, int $key) use ($id) {
+                if ($id == $value->id_question) {
+                    return true;
+                }
+            });
+
+            array_push($sortedq, $question);
+            array_push($sorteda, $ans);
+        }
+        
+        return view('admin.answer', [
+            'survey'=>$survey,
+            'questions'=>$sortedq,
+            'answers'=>$sorteda,
+        ]);
+    }
+
+    
     
     
 
