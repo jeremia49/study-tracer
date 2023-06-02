@@ -143,8 +143,11 @@ class AdminController extends Controller
         // dd($request);
         $validated = $request->validate([
             'id' => ['required','exists:questions,id'],
-            'options' => ['required'],
+            'options' => ['nullable'],
         ]);
+        if(!array_key_exists('options', $validated)){
+            $validated['options'] = [];
+        }
         
         $question = Question::find($validated['id']);
         $question->options = json_encode($validated['options'], JSON_HEX_TAG);
@@ -170,8 +173,11 @@ class AdminController extends Controller
     public function editSurveyQuestion(int $id, Request $request){
         $survey = Survey::find($id);
         $validated = $request->validate([
-            'idquestion' => ['required', 'exists:questions,id'],
+            'idquestion' => ['nullable', 'exists:questions,id'],
         ]);
+        if(!array_key_exists('idquestion', $validated)){
+            $validated['idquestion'] = [];
+        }
         $survey->questions = json_encode($validated['idquestion'], JSON_HEX_TAG);
         $check = $survey->save();
         if($check){

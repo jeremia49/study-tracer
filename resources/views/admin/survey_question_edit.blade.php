@@ -42,7 +42,7 @@
                         <!-- Modal body -->
                         <div class="p-6 space-y-6">
                             <form action="{{ route('admin.surveyquestionedit', ['id' => $survey->id]) }}" method="POST"
-                                class="w-full" autocomplete="off">
+                                class="w-full" autocomplete="off" id="formSurveyQuestion">
 
                                 @csrf
 

@@ -29,26 +29,76 @@ function createEl(angka, id, val=''){
     return wrapper.firstChild;
 }
 
+function getData(form) {
+    var formData = new FormData(form);
+    console.log(Object.fromEntries(formData));
+}
+
+
 $(() => {
     select2($);
 
     const optionsContainer = $('#optionContainer');
 
+    //konversi ke tipe data yang bisa diolah select2
     var questions = QUESTIONS.map(function(current,index,arr){
         return {'id':current.id, 'text':current.question}
     })
 
     const inputquestion = $('#inputquestion')
 
+    //load data
+    JSON5.parse(SURVEY.questions).forEach(function (idx){
+        const question = QUESTIONS.find(function(curr, index, arr){
+            if(curr.id == idx) return true;
+        })
+        optionsContainer.append(createEl(optionsContainer.children().length + 1,question.id,question.question))
+    });
+
+
+    function refreshQuestions(){
+        //konversi ke tipe data yang bisa diolah select2
+        questions = QUESTIONS.map(function(current,index,arr){
+            return {'id':current.id, 'text':current.question}
+        })
+
+        //dapatkan semua id dari pertanyaan dari form
+        let idquestion = $('#formSurveyQuestion').serializeArray().filter(function(val,idx,arr){
+            if(val.name == "idquestion[]") return true
+        }).map(function(val,idx,arr){
+            return val.value
+        })
+
+        //filter question yang tersisa
+        questions = questions.filter(function(item) {
+            if(idquestion.includes(item.id.toString())) return false
+            return true
+        })
+    }
+    
+    refreshQuestions();
+    //inisialisasi select2
     inputquestion.select2({
         data : questions,
     });
 
     inputquestion.on('select2:select', function(e){
         var data = e.params.data;
-        optionsContainer.append(createEl(optionsContainer.children().length + 1,data.id,data.text))
+
+        const idquestion = $('#formSurveyQuestion').serializeArray().filter(function(val,idx,arr){
+            if(val.name == "idquestion[]") return true
+        }).map(function(val,idx,arr){
+            return val.value
+        })
+
+        if(idquestion.includes(data.id)){
+            alert('Tidak dapat menambah pertanyaan dengan id yang sama !')
+        }else{
+            optionsContainer.append(createEl(optionsContainer.children().length + 1,data.id,data.text))
+        }
 
         inputquestion.empty().trigger('change')
+        refreshQuestions();
         inputquestion.select2({
             data : questions,
         });
@@ -60,16 +110,16 @@ $(() => {
         $('#optionContainer > li > div > div > p.nomortext').each(function(i,obj){
             obj.innerHTML = i + 1;
         })
+
+        refreshQuestions();
+        inputquestion.select2({
+            data : questions,
+        });
     })
 
-    JSON5.parse(SURVEY.questions).forEach(function (idx){
-        const question = QUESTIONS.find(function(curr, index, arr){
-            if(curr.id == idx) return true;
-        })
-        optionsContainer.append(createEl(optionsContainer.children().length + 1,question.id,question.question))
-    });
-
 });
+
+
 
 
 
