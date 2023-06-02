@@ -28,11 +28,8 @@
 
 @push('scripts')
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- <script src="../node_modules/flowbite/dist/flowbite.min.js"></script> -->
-    <!-- for online -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="/js/sidebar.js"></script>
     <script src="/js/dark-mode.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/datepicker.min.js"></script>
-   
 @endpush

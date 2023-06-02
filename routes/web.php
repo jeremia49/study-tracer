@@ -28,6 +28,12 @@ Route::group([
     'middleware' => ['auth'],
 ],function () {
     Route::get('/', [UserController::class, 'dashboardPage'])->name('dashboard');
+    Route::get('/survey', [UserController::class, 'surveyPage'])->name('survey');
+    Route::get('/fillSurvey/{id}', [UserController::class, 'fillSurvey'])->name('fillSurvey');
+    Route::post('/fillSurvey/{id}', [UserController::class, 'submitSurvey'])->name('submitSurvey');
+    
+
+
 
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 });

@@ -5,14 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description"
-        content="Get started with a free and open-source admin dashboard layout built with Tailwind CSS and Flowbite featuring charts, widgets, CRUD layouts, authentication pages, and more" />
-    <meta name="author" content="Themesberg" />
-    <meta name="generator" content="Hugo 0.58.2" />
+        content="Halaman Responden Study Tracer" />
+    <meta name="author" content="Tim SPK Unimed" />
+    <meta name="generator" content="" />
 
     @hasSection('title')
         <title>@yield('title')</title>
     @endif
-
+    <link rel="icon" type="image/png" href="/img/icon-unimed.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -62,7 +62,7 @@
                 <div class="flex items-center">
                     <!-- for dark mode -->
                     <button id="theme-toggle" data-tooltip-target="tooltip-toggle" type="button"
-                        class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                        class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none  dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
                         <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 animate-[spin_450ms_ease-in-out]" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -91,7 +91,7 @@
                             </button>
                         </div>
 
-                        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+                        <div class="z-50 hidden mr-5 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
                             id="dropdown-user">
                             <div class="px-4 py-3" role="none">
                                 <p class="text-sm text-gray-900 dark:text-white text-center" role="none">
@@ -118,156 +118,10 @@
     
     @include('user.menu')
 
-    <div id="main-content" class="grid grid-cols-1 content-between relative w-full h-[90vh] overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
-        <main>
-            <div class="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
-                <div class="mb-4 col-span-full xl:mb-2">
-                    <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
-                        Dashboard
-                    </h1>
-                </div>
-                <!-- Right Content -->
-                <div class="col-span-full">
-                    <div
-                        class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-                        <div class="w-full pt-5 mb-10 overflow-auto scrollbar-hide">
-                            <ul id="dotPaginate" class="wrapper-dot-pagination px-3">
-                                <!-- <li class="done">
-                      <span class=""></span>
-                    </li>
-                    <li class="active">
-                      <span class=""></span>
-                    </li>
-                    <li class="">
-                      <span class=""></span>
-                    </li> -->
-                            </ul>
-                        </div>
-                        <form action="#">
-                            <div class="pages">
-                                <h3 class="mb-4 text-xl font-semibold dark:text-white">
-                                    General information
-                                </h3>
-                                <div class="grid grid-cols-6 gap-6">
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <label for="first-name"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
-                                            Name</label>
-                                        <input type="text" name="first-name" id="first-name"
-                                            class="style-input bg-gray-50" placeholder="Bonnie" />
-                                    </div>
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <label for="last-name"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
-                                            Name</label>
-                                        <input type="text" name="last-name" id="last-name"
-                                            class="style-input bg-gray-50" placeholder="Green" />
-                                    </div>
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <label for="country"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
-                                        <input type="text" name="country" id="country"
-                                            class="style-input bg-gray-50" placeholder="United States" />
-                                    </div>
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <label for="city"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
-                                        <input type="text" name="city" id="city"
-                                            class="style-input bg-gray-50" placeholder="e.g. San Francisco" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pages">
-                                <h3 class="mb-4 text-xl font-semibold dark:text-white">
-                                    Address
-                                </h3>
-                                <div class="grid grid-cols-6 gap-6">
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <label for="first-name1"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
-                                            Name</label>
-                                        <input type="text" name="first-name1" id="first-name1"
-                                            class="style-input bg-gray-50" placeholder="Bonnie" />
-                                    </div>
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <label for="last-name1"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
-                                            Name</label>
-                                        <input type="text" name="last-name1" id="last-name1"
-                                            class="style-input bg-gray-50" placeholder="Green" />
-                                    </div>
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <label for="country1"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
-                                        <input type="text" name="country1" id="country1"
-                                            class="style-input bg-gray-50" placeholder="United States" />
-                                    </div>
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <label for="city1"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
-                                        <input type="text" name="city1" id="city1"
-                                            class="style-input bg-gray-50" placeholder="e.g. San Francisco" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pages">
-                                <h3 class="mb-4 text-xl font-semibold dark:text-white">
-                                    Address
-                                </h3>
-                                <div class="grid grid-cols-6 gap-6">
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <label for="first-name1"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
-                                            Name</label>
-                                        <input type="text" name="first-name1" id="first-name1"
-                                            class="style-input bg-gray-50" placeholder="Bonnie" />
-                                    </div>
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <label for="last-name1"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
-                                            Name</label>
-                                        <input type="text" name="last-name1" id="last-name1"
-                                            class="style-input bg-gray-50" placeholder="Green" />
-                                    </div>
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <label for="country1"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
-                                        <input type="text" name="country1" id="country1"
-                                            class="style-input bg-gray-50" placeholder="United States" />
-                                    </div>
-                                    <div class="col-span-6 sm:col-span-3">
-                                        <label for="city1"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
-                                        <input type="text" name="city1" id="city1"
-                                            class="style-input bg-gray-50" placeholder="e.g. San Francisco" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="collect-btn sm:col-full">
-                                <a id="btnPrevious" onclick="nextPreview(-1,event)"
-                                    class="text-white bg-slate-700 cursor-pointer hover:bg-slate-800 focus:ring-4 focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800">
-                                    Previous
-                                </a>
-                                <a id="btnNext" href="www.google.com" onclick="nextPreview(1,event)"
-                                    class="cursor-pointer text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                    Next
-                                </a>
-                                <button id="btnChecked" onclick="nextPreview(0,event)"
-                                    class=" text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                                    type="submit">
-                                    checked
-                                </button>
-                                <button id="btnSubmit"
-                                    class=" text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                                    type="submit">
-                                    Submit
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </main>
+    <div id="main-content" class=" grid grid-cols-1 content-between relative w-full h-[90vh] overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
+        
+        @hasSection('content')@yield('content')@endif
+        
         <footer class="p-4 mt-6 bg-white md:flex md:items-center md:justify-between md:p-6 xl:p-8 dark:bg-gray-800">
             <ul class="flex flex-wrap items-center mb-6 space-y-1 md:mb-0">
                 <li>
@@ -334,14 +188,8 @@
     </div>
     </div>
 
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- <script src="../node_modules/flowbite/dist/flowbite.min.js"></script> -->
-    <!-- for online -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-    <script src="/js/sidebar.js"></script>
-    <script src="/js/dark-mode.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/datepicker.min.js"></script>
-    <script src="/js/formPerpage.js"></script>
+    @stack('scripts')
+    
 </body>
 
 </html>
