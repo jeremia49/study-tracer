@@ -53,7 +53,7 @@
 
                                     @if ($question->type == 'text')
                                         <div class="@if($question->is_mandatory) text-required @endif ">
-                                            <input type="text" name="{{ $question->id }}" id="{{ $question->id }}"
+                                            <input type="text" name="ans{{ $question->id }}" id="{{ $question->id }}"
                                                 class="style-input bg-gray-50" placeholder=""
                                                 @if ($question->is_mandatory) required @endif
                                                 value="{{old($question->id)}}"
@@ -63,7 +63,7 @@
                                         <div class="@if($question->is_mandatory) radio-required @endif ">
                                             @forelse (json_decode($question->options) as $option)
                                                 <div class="flex items-center mr-4">
-                                                    <input id="{{ $question->id }}-{{$option}}" type="radio" value="{{$option}}" name="{{ $question->id }}"
+                                                    <input id="{{ $question->id }}-{{$option}}" type="radio" value="{{$option}}" name="ans{{ $question->id }}"
                                                         class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
                                                         @checked(old($question->id)==$option) @if($question->is_mandatory) required @endif >
                                                     <label for="{{ $question->id }}-{{$option}}"
@@ -81,7 +81,7 @@
                                         <div class="@if($question->is_mandatory) radioothers-required @endif ">
                                             @forelse (json_decode($question->options) as $option)
                                                 <div class="flex items-center mr-4">
-                                                    <input id="{{ $question->id }}-{{$option}}" type="radio" value="{{$option}}" name="{{ $question->id }}"
+                                                    <input id="{{ $question->id }}-{{$option}}" type="radio" value="{{$option}}" name="ans{{ $question->id }}"
                                                         class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
                                                         @checked(old($question->id)==$option) @if($question->is_mandatory) required @endif >
                                                     <label for="{{ $question->id }}-{{$option}}"
@@ -95,7 +95,7 @@
                                                 </div>
                                             @endforelse
                                             <div class="flex items-center mr-4">
-                                                <input id="{{ $question->id }}-extra" type="radio" value="" name="{{ $question->id }}"
+                                                <input id="{{ $question->id }}-extra" type="radio" value="" name="ans{{ $question->id }}"
                                                         class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
                                                         @checked(old($question->id)==$option) @if($question->is_mandatory) required @endif >
                                                 <label for="{{ $question->id }}-extra"
@@ -109,7 +109,7 @@
                                         <div class="@if($question->is_mandatory) checkbox-required @endif ">
                                         @forelse (json_decode($question->options) as $option)
                                             <div class="flex items-center mr-4">
-                                                <input id="{{ $question->id }}-{{$option}}" type="checkbox" value="{{$option}}" name="{{ $question->id }}"
+                                                <input id="{{ $question->id }}-{{$option}}" type="checkbox" value="{{$option}}" name="ans{{ $question->id }}"
                                                     class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
                                                     @checked(old($question->id)==$option) 
                                                     >
@@ -129,7 +129,7 @@
                                         <div class="flex flex-row @if($question->is_mandatory) rate-required @endif">
                                             @forelse (json_decode($question->options) as $option)
                                                 <div class="flex items-center mr-4">
-                                                    <input id="{{ $question->id }}-{{$option}}" type="radio" value="{{$option}}" name="{{ $question->id }}"
+                                                    <input id="{{ $question->id }}-{{$option}}" type="radio" value="{{$option}}" name="ans{{ $question->id }}"
                                                         class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
                                                         @checked(old($question->id)==$option) @if($question->is_mandatory) required @endif >
                                                     <label for="{{ $question->id }}-{{$option}}"

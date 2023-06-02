@@ -21,9 +21,19 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::create([
             'nama' => 'admin',
             'prodi' => 'ilmu komputer',
-            'nim' => 1,
+            'nim' => 123,
             'role' => 'admin',
-            'password' =>\Illuminate\Support\Facades\Hash::make("1")
+            'password' =>\Illuminate\Support\Facades\Hash::make("123")
         ]);
+
+        \App\Models\User::create([
+            'nama' => 'user',
+            'prodi' => 'ilmu komputer',
+            'nim' => 456,
+            'role' => 'responden',
+            'password' =>\Illuminate\Support\Facades\Hash::make("456")
+        ]);
+
+
     }
 }

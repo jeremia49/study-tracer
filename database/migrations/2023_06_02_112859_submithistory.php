@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('answers', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('id_submit');
+        Schema::create('submithistory', function (Blueprint $table) {
+            $table->id(); //idsubmit
+            $table->bigInteger('id_user');
             $table->bigInteger('id_survey');
-            $table->bigInteger('id_question');
-            $table->text('content');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('answers');
+        Schema::dropIfExists('submithistory');
     }
 };

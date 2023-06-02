@@ -31,10 +31,6 @@ Route::group([
     Route::get('/survey', [UserController::class, 'surveyPage'])->name('survey');
     Route::get('/fillSurvey/{id}', [UserController::class, 'fillSurvey'])->name('fillSurvey');
     Route::post('/fillSurvey/{id}', [UserController::class, 'submitSurvey'])->name('submitSurvey');
-    
-
-
-
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 });
 
@@ -60,7 +56,6 @@ Route::group([
     Route::get('/deleteQuestion/{id}', [AdminController::class, 'deleteQuestion'])->name('deleteQuestion');
 
     Route::post('/editOptions/', [AdminController::class, 'editOptions'])->name('editOptions');
-    
     
     Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 });

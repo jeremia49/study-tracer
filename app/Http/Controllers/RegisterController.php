@@ -32,6 +32,6 @@ class RegisterController extends Controller
             return redirect()->route('login')->with('success','Akun anda berhasil didaftarkan , silahkan login');
         }
 
-        return redirect()->back()->with('error','Something is Wrong');;
+        return redirect()->back()->with('error','Something is Wrong');
     }
 }
