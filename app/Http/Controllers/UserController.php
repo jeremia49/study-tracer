@@ -60,6 +60,8 @@ class UserController extends Controller
     {
         $survey = Survey::find($id);
         $questions_id = json_decode($survey->questions);
+        $questions = collect(Question::findMany($questions_id));
+
         $answers = $request->collect();
 
         $submission = SubmitHistory::create([
@@ -74,12 +76,28 @@ class UserController extends Controller
 
         $answerdata = [];
         foreach ($questions_id as $id) {
-            $data = [
-                'id_submit' => $submission->id,
-                'id_survey' => $survey->id,
-                'id_question' => $id,
-                'content' => $answers['ans' . $id],
-            ];
+            $question = $questions->first(function ($value, int $key) use ($id) {
+                if ($id == $value->id) {
+                    return true;
+                }
+            });
+
+            if ($question->type == 'checkbox') {
+                $data = [
+                    'id_submit' => $submission->id,
+                    'id_survey' => $survey->id,
+                    'id_question' => $id,
+                    'content' => json_encode($answers['ans' . $id]),
+                ];
+            } else {
+                $data = [
+                    'id_submit' => $submission->id,
+                    'id_survey' => $survey->id,
+                    'id_question' => $id,
+                    'content' => $answers['ans' . $id],
+                ];
+            }
+
             array_push($answerdata, $data);
         }
 
@@ -93,5 +111,4 @@ class UserController extends Controller
             ->back()
             ->with('error', 'Gagal mensubmit jawaban');
     }
-
 }

@@ -109,7 +109,7 @@
                                         <div class="@if($question->is_mandatory) checkbox-required @endif ">
                                         @forelse (json_decode($question->options) as $option)
                                             <div class="flex items-center mr-4">
-                                                <input id="{{ $question->id }}-{{$option}}" type="checkbox" value="{{$option}}" name="ans{{ $question->id }}"
+                                                <input id="{{ $question->id }}-{{$option}}" type="checkbox" value="{{$option}}" name="ans{{ $question->id }}[]"
                                                     class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
                                                     @checked(old($question->id)==$option) 
                                                     >
