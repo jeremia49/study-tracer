@@ -38,59 +38,44 @@
 
                     <br>
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        
+
                         <!-- Modal body -->
                         <div class="p-6 space-y-6">
-                            <form action="{{ route('admin.surveyedit', ['id' => $survey->id]) }}" method="POST" class="w-full"
-                                autocomplete="off">
+                            <form action="{{ route('admin.surveyquestionedit', ['id' => $survey->id]) }}" method="POST"
+                                class="w-full" autocomplete="off">
 
                                 @csrf
 
-                                <div class="mt-2">
-                                    <label for="nama"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
-                                        Survey</label>
-                                    <input type="text" id="nama" name="nama" class="style-input bg-gray-50"
-                                        placeholder="" required value="{{old('nama', $survey->nama)}}" />
-                                    @error('nama')
-                                        <span class="text-pink-500 text-sm">
-                                            {{ $message }}
-                                        </span>
-                                    @enderror
-                                </div>
+                                <ul class=" divide-y divide-gray-200 dark:divide-gray-700">
+                                    <li class="pb-3 sm:pb-4 px-5">
+                                        <div class="flex items-center space-x-4 w-full">
+                                            <div
+                                                class="flex-shrink-0 text-center text-sm font-bold text-gray-900 truncate dark:text-white mr-3">
+                                                No.
+                                            </div>
+                                            <div
+                                                class="flex-1 text-center text-sm font-bold text-gray-900 truncate dark:text-white mr-3">
+                                                Pertanyaan
+                                            </div>
+                                            <div
+                                                class="flex-shrink-0 text-center text-sm font-bold text-gray-900 truncate dark:text-white mr-3">
+                                                Aksi
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <div id="optionContainer"></div>
+
+                                </ul>
+
 
                                 <div class="mt-2">
-                                    <label for="periode"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tahun
-                                        Survey</label>
-                                    <input type="number" id="periode" name="periode" class="style-input bg-gray-50"
-                                        placeholder="" required value="{{old('periode', $survey->periode)}}" />
-                                    @error('periode')
-                                        <span class="text-pink-500 text-sm">
-                                            {{ $message }}
-                                        </span>
-                                    @enderror
+                                    <label for="question"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Input
+                                        Pertanyaan</label>
+                                    <input type="text" id="inputquestion" class="style-input bg-gray-50"
+                                        placeholder="Masukkan Pertanyaan" multiple="multiple" />
                                 </div>
-
-                                <div class="mt-2">
-                                    <label for="is_active"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status
-                                        Survey</label>
-
-                                    <select id="is_active" name="is_active"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        <option value="-1" @selected(old('is_active', $survey->is_active) == '-1')>Pilih Status</option>
-                                        <option value="1" @selected(old('is_active', $survey->is_active) == '1')>Aktif</option>
-                                        <option value="0" @selected(old('is_active', $survey->is_active) == '0')>Tidak Aktif</option>
-                                    </select>
-
-                                    @error('is_active')
-                                        <span class="text-pink-500 text-sm">
-                                            {{ $message }}
-                                        </span>
-                                    @enderror
-                                </div>
-
 
                                 <button id="submit" type="submit"
                                     class="px-4 py-2  mt-8 w-full text-base font-semibold  bg-emerald-400 rounded-md border-none text-white btn-flash">
@@ -117,4 +102,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/datepicker.min.js"></script>
     <script src="/js/sidebar.js"></script>
     <script src="/js/dark-mode.js"></script>
+    <script>
+        var SURVEY = {!! json_encode($survey, JSON_HEX_TAG) !!}
+        var QUESTIONS = {!! json_encode($questions, JSON_HEX_TAG) !!}
+    </script>
+    @vite('resources/js/admineditsurveyquestion.js')
 @endpush

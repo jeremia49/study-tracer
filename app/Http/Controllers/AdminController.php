@@ -157,6 +157,30 @@ class AdminController extends Controller
         return redirect()->back()->with('error','Something is Wrong');
     }
 
+
+    public function editSurveyQuestionPage($id){
+        $survey = Survey::find($id);
+        $questions = Question::all();
+        return view('admin.survey_question_edit', [
+            'survey' => $survey,
+            'questions'=> $questions,
+        ]);
+    }
+
+    public function editSurveyQuestion(int $id, Request $request){
+        $survey = Survey::find($id);
+        $validated = $request->validate([
+            'idquestion' => ['required', 'exists:questions,id'],
+        ]);
+        $survey->questions = json_encode($validated['idquestion'], JSON_HEX_TAG);
+        $check = $survey->save();
+        if($check){
+            return redirect()->route('admin.surveyquestionedit',['id'=>$survey->id])->with('success','Pertanyaan berhasil disimpan !');
+        }
+
+        return redirect()->back()->with('error','Something is Wrong');
+
+    }
     
     
 
