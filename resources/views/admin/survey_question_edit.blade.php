@@ -34,9 +34,6 @@
                 @endif
 
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-
-
-                    <br>
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
 
                         <!-- Modal body -->
@@ -45,7 +42,13 @@
                                 class="w-full" autocomplete="off" id="formSurveyQuestion">
 
                                 @csrf
-
+                                <div class="mt-2  mb-8">
+                                    <label for="question"
+                                        class="block mb-2 text-center  text-sm font-bold md:text-base text-gray-900 dark:text-white">Pilih Pertanyaan</label>
+                                    <input type="text" id="inputquestion" class="style-input bg-gray-50"
+                                        placeholder="Masukkan Pertanyaan" multiple="multiple" />
+                                   
+                                </div>
                                 <ul class=" divide-y divide-gray-200 dark:divide-gray-700">
                                     <li class="pb-3 sm:pb-4 px-5">
                                         <div class="flex items-center space-x-4 w-full">
@@ -69,18 +72,12 @@
                                 </ul>
 
 
-                                <div class="mt-2">
-                                    <label for="question"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Input
-                                        Pertanyaan</label>
-                                    <input type="text" id="inputquestion" class="style-input bg-gray-50"
-                                        placeholder="Masukkan Pertanyaan" multiple="multiple" />
-                                </div>
-
-                                <button id="submit" type="submit"
-                                    class="px-4 py-2  mt-8 w-full text-base font-semibold  bg-emerald-400 rounded-md border-none text-white btn-flash">
-                                    Submit
-                                </button>
+                               <div class="flex justify-end w-full mt-6">
+                                    <button id="submit" type="submit"
+                                    class=" px-4 py-2 text-sm font-semibold md:text-base bg-emerald-500 hover:bg-emerald-700 rounded-md border-none text-white  inline-block btn-flash">
+                                        Simpan
+                                    </button>
+                               </div>
 
                             </form>
                         </div>

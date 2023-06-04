@@ -11,7 +11,7 @@
 
 @section('content')
     <main>
-        <div class="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
+        <div class="grid grid-cols-1 px-4  xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
             <div class="mb-4 col-span-full xl:mb-2">
                 <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
                     Edit Survey {{$survey->nama}}
@@ -34,18 +34,13 @@
                 @endif
 
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-
-
-                    <br>
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                         
                         <!-- Modal body -->
                         <div class="p-6 space-y-6">
                             <form action="{{ route('admin.surveyedit', ['id' => $survey->id]) }}" method="POST" class="w-full"
                                 autocomplete="off">
-
                                 @csrf
-
                                 <div class="mt-2">
                                     <label for="nama"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
@@ -71,12 +66,10 @@
                                         </span>
                                     @enderror
                                 </div>
-
                                 <div class="mt-2">
                                     <label for="is_active"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status
                                         Survey</label>
-
                                     <select id="is_active" name="is_active"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <option value="-1" @selected(old('is_active', $survey->is_active) == '-1')>Pilih Status</option>
@@ -90,13 +83,12 @@
                                         </span>
                                     @enderror
                                 </div>
-
-
-                                <button id="submit" type="submit"
-                                    class="px-4 py-2  mt-8 w-full text-base font-semibold  bg-emerald-400 rounded-md border-none text-white btn-flash">
-                                    Submit
-                                </button>
-
+                                <div class="flex justify-end w-full">
+                                    <button id="submit" type="submit"
+                                        class="btn-submit btn-flash">
+                                        Submit
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>

@@ -14,21 +14,21 @@
     <main>
         <div class="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
             <div class="mb-4 col-span-full xl:mb-2">
-                <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
+                <h1 class="text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl dark:text-white text-center capitalize">
                     {{ $survey->nama }}
                 </h1>
             </div>
             <!-- Right Content -->
             <div class="col-span-full">
                 @if (session('success'))
-                    <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+                    <div class="p-4 mb-4 text-sm lg:text-md text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
                         role="alert">
                         <span class="font-medium">{{ session('success') }}</span>
                     </div>
                 @endif
 
                 @if (session('error'))
-                    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                    <div class="p-4 mb-4 text-sm lg:text-md text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
                         role="alert">
                         <span class="font-medium">{{ session('error') }}</span>
                     </div>
@@ -45,7 +45,7 @@
                             @forelse ($questions as $question)
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="{{ $question->id }}"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $question->question }}
+                                        class="block mb-2 text-sm lg:text-md md:text-md lg:text-lg font-medium text-gray-900 dark:text-white">{{ $question->question }}
                                         @if ($question->is_mandatory)
                                             <span class="text-rose-600">*</span>
                                         @endif
@@ -67,11 +67,11 @@
                                                         class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
                                                         @checked(old($question->id)==$option) @if($question->is_mandatory) required @endif >
                                                     <label for="{{ $question->id }}-{{$option}}"
-                                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" >{{$option}}</label>
+                                                        class="ml-2 text-sm lg:text-md font-medium text-gray-900 dark:text-gray-300" >{{$option}}</label>
                                                 </div>
                                             @empty
                                                 <div class="flex items-center mr-4">
-                                                    <div class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                    <div class="ml-2 text-sm lg:text-md mb-2 lg:text-md font-medium text-gray-900 dark:text-gray-300">
                                                         Tidak ada opsi tersedia
                                                     </div>
                                                 </div>
@@ -85,23 +85,23 @@
                                                         class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
                                                         @checked(old($question->id)==$option) @if($question->is_mandatory) required @endif >
                                                     <label for="{{ $question->id }}-{{$option}}"
-                                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" >{{$option}}</label>
+                                                        class="ml-2 text-sm lg:text-md font-medium text-gray-900 dark:text-gray-300" >{{$option}}</label>
                                                 </div>
                                             @empty
                                                 <div class="flex items-center mr-4">
-                                                    <div class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                    <div class="ml-2 text-sm lg:text-md mb-2 font-medium text-gray-900 dark:text-gray-300">
                                                         Tidak ada opsi tersedia
                                                     </div>
                                                 </div>
                                             @endforelse
-                                            <div class="flex items-center mr-4">
+                                            <div class="flex items-center ">
                                                 <input id="{{ $question->id }}-extra" type="radio" value="" name="ans{{ $question->id }}"
                                                         class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
                                                         @checked(old($question->id)==$option) @if($question->is_mandatory) required @endif >
                                                 <label for="{{ $question->id }}-extra"
-                                                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" >Lainnya :  </label>
+                                                    class="mx-2 text-sm lg:text-md font-medium text-gray-900 dark:text-gray-300">Lainnya :  </label>
                                                 <input type="text"  id="{{ $question->id }}-extra"
-                                                class="ml-2 style-input bg-gray-50 h-8" placeholder="" style="width:25% !important;"
+                                                class="ml-2 style-input bg-gray-50 h-8 w-[90%]  md:w-[25%]" placeholder="" 
                                                 value="{{old($question->id)}}"/>
                                             </div>
                                         </div>
@@ -114,11 +114,11 @@
                                                     @checked(old($question->id)==$option) 
                                                     >
                                                 <label for="{{ $question->id }}-{{$option}}"
-                                                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" >{{$option}}</label>
+                                                    class="ml-2 text-sm lg:text-md font-medium text-gray-900 dark:text-gray-300" >{{$option}}</label>
                                             </div>
                                         @empty
                                             <div class="flex items-center mr-4">
-                                                <div class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                <div class="ml-2 text-sm lg:text-md mb-2 font-medium text-gray-900 dark:text-gray-300">
                                                     Tidak ada opsi tersedia
                                                 </div>
                                             </div>
@@ -133,11 +133,11 @@
                                                         class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
                                                         @checked(old($question->id)==$option) @if($question->is_mandatory) required @endif >
                                                     <label for="{{ $question->id }}-{{$option}}"
-                                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" >{{$option}}</label>
+                                                        class="ml-2 text-sm lg:text-md font-medium text-gray-900 dark:text-gray-300" >{{$option}}</label>
                                                 </div>
                                             @empty
                                                 <div class="flex items-center mr-4">
-                                                    <div class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                    <div class="ml-2 text-sm lg:text-md mb-2 font-medium text-gray-900 dark:text-gray-300">
                                                         Tidak ada opsi tersedia
                                                     </div>
                                                 </div>
@@ -149,24 +149,26 @@
                                 </div>
                             @empty
                                 <div class="flex items-center mr-4">
-                                    <div class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                    <div class="ml-2 text-sm lg:text-md font-medium text-gray-900 dark:text-gray-300">
                                         Belum ada pertanyaan untuk survey ini !
                                     </div>
                                 </div>      
                             @endforelse
-
+                    <div class="sm:col-full col-span-6 sm:col-span-3">
+                        <button id="btnSubmit"
+                            class="float-right text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm lg:text-md px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                            type="submit">
+                            Submit
+                        </button>
+                    </div>
                         </div>
+
                 </div>
-                <div class="sm:col-full">
-                    <button id="btnSubmit"
-                        class="float-right text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                        type="submit">
-                        Submit
-                    </button>
-                </div>
+                
                 </form>
             </div>
         </div>
+    </main>
     @endsection
 
 

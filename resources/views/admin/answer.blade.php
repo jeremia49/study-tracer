@@ -12,7 +12,7 @@
 
 @section('content')
     <main>
-        <div class="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
+        <div class="grid items content-between grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
             <div class="mb-4 col-span-full xl:mb-2">
                 <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
                     {{ $survey->nama }}
@@ -60,7 +60,7 @@
                                                 />
                                         </div>
                                     @elseif($question->type == 'radio')
-                                        <div class="@if($question->is_mandatory) radio-required @endif ">
+                                        <div class="@if($question->is_mandatory) radio-required @endif gap-y-3 flex flex-col ">
                                             @forelse (json_decode($question->options) as $option)
                                                 <div class="flex items-center mr-4">
                                                     <input id="{{ $question->id }}-{{$option}}" type="radio" value="{{$option}}" name="ans{{ $question->id }}"
@@ -157,12 +157,14 @@
                             @endforelse
 
                         </div>
+                    
                 </div>
                 <div class="sm:col-full">
                 </div>
                 </form>
             </div>
         </div>
+    </main>
     @endsection
 
 

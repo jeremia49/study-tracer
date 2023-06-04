@@ -34,11 +34,23 @@
                 @endif
 
                 <div
-                    class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white px-4 dark:bg-gray-900 dark:shadow-slate-800 pb-8">
-                    <button type="button" data-modal-target="newQuestionModal" data-modal-toggle="newQuestionModal"
-                        class="float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 my-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Buat
-                        Pertanyaan Baru
-                    </button>
+                    class="relative overflow-x-auto shadow-md sm:rounded-lg md:overflow-hidden bg-white px-4 dark:bg-gray-900 dark:shadow-slate-800 pb-8">
+                    <div>
+                        
+                        <button type="button" data-tooltip-placement="right" data-tooltip-target="create-btn" data-tooltip-trigger="hover" data-modal-target="newQuestionModal" data-modal-toggle="newQuestionModal"
+                            class="float-right text-blue-700 border-none focus:outline-none hover:shadow-xl font-bold   rounded-lg text-sm px-5 py-2.5 mr-2 my-4 bg-white dark:bg-gray-900  dark:border-slate-600 dark:shadow-slate-700 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </button>
+                        <div id="create-btn" role="tooltip"
+                            class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                            Buat Pertanyaan Baru 
+                            <div class="tooltip-arrow" data-popper-arrow></div>
+                        </div>
+                    </div>
+                   
+                   
                     <table class="w-full text-sm  text-left text-gray-500 dark:text-gray-400 rounded-xl ">
                         <thead class="text-xs  text-gray-900 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
@@ -180,7 +192,7 @@
                             <span class="sr-only">Tutup</span>
                         </button>
                     </div>
-                    <!-- Modal body -->
+                    <!-- Modal body edit -->
                     <form action="{{ route('admin.createQuestion') }}" method="POST" class="w-full" autocomplete="off">
                         <div class="p-6 space-y-2">
                             @csrf
@@ -249,9 +261,9 @@
                         <div
                             class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                             <button type="submit"
-                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Kirim</button>
+                                class="text-white bg-green-500 hover:bg-green-700 transition-all duration-300 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800">Simpan</button>
                             <button data-modal-hide="newQuestionModal" type="button"
-                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                                class="text-gray-500 bg-white hover:bg-rose-600 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5  focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
                         </div>
                     </form>
                 </div>
@@ -289,14 +301,25 @@
                             @csrf
                             <input type="hidden" name="id" value="" id="idQuestion">
                         </form>
-                        <button type="button"
-                            class="text-right text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                            id="addOptionButton">Tambah Opsi</button>
+                        <div class="flex justify-center w-full">
+                        <button type="button" data-tooltip-placement="left" data-tooltip-target="added-option" data-tooltip-trigger="hover"
+                            class="  text-teal-500 hover:text-teal-600 hover:shadow-xl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+                            id="addOptionButton"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 lg:w-8 lg:h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            </button>
+
+                            <div id="added-option" role="tooltip"
+                                class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                Tambah Opsi
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
+                        </div>
                     </div>
                     <!-- Modal footer -->
                     <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                         <button type="submit"
-                            class="text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="btnupdateOptions">
+                            class="text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" id="btnupdateOptions">
                             Kirim</button>
                         <button data-modal-hide="optionModal" type="button"
                             class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Batal</button>
