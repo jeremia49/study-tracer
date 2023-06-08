@@ -56,7 +56,7 @@
                                             <input type="text" name="ans{{ $question->id }}" id="{{ $question->id }}"
                                                 class="style-input bg-gray-50" placeholder=""
                                                 @if ($question->is_mandatory) required @endif
-                                                value="{{$answers[$loop->index]->content}}"
+                                                value="{{$answers[$loop->index]?->content}}"
                                                 />
                                         </div>
                                     @elseif($question->type == 'radio')
@@ -65,7 +65,7 @@
                                                 <div class="flex items-center mr-4">
                                                     <input id="{{ $question->id }}-{{$option}}" type="radio" value="{{$option}}" name="ans{{ $question->id }}"
                                                         class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
-                                                        @checked($answers[$loop->parent->index]->content==$option) @if($question->is_mandatory) required @endif >
+                                                        @checked($answers[$loop->parent->index]?->content==$option) @if($question->is_mandatory) required @endif >
                                                     <label for="{{ $question->id }}-{{$option}}"
                                                         class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" >{{$option}}</label>
                                                 </div>
@@ -83,7 +83,7 @@
                                                 <div class="flex items-center mr-4">
                                                     <input id="{{ $question->id }}-{{$option}}" type="radio" value="{{$option}}" name="ans{{ $question->id }}"
                                                         class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
-                                                        @checked($answers[$loop->parent->index]->content==$option) @if($question->is_mandatory) required @endif >
+                                                        @checked($answers[$loop->parent->index]?->content==$option) @if($question->is_mandatory) required @endif >
                                                     <label for="{{ $question->id }}-{{$option}}"
                                                         class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" >{{$option}}</label>
                                                 </div>
@@ -95,15 +95,15 @@
                                                 </div>
                                             @endforelse
                                             <div class="flex items-center mr-4">
-                                                <input id="{{ $question->id }}-extra" type="radio" value="{{$answers[$loop->index]->content}}" name="ans{{ $question->id }}"
+                                                <input id="{{ $question->id }}-extra" type="radio" value="{{$answers[$loop->index]?->content}}" name="ans{{ $question->id }}"
                                                         class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
-                                                        {{-- @checked($answers[$loop->index]->content==$answers[$loop->index]->content)  --}}
+                                                        {{-- @checked($answers[$loop->index]?->content==$answers[$loop->index]?->content)  --}}
                                                         @if($question->is_mandatory) required @endif >
                                                 <label for="{{ $question->id }}-extra"
                                                     class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" >Lainnya :  </label>
                                                 <input type="text"  id="{{ $question->id }}-extra"
                                                 class="ml-2 style-input bg-gray-50 h-8" placeholder="" style="width:25% !important;"
-                                                value="{{$answers[$loop->index]->content}}"/>
+                                                value="{{$answers[$loop->index]?->content}}"/>
                                             </div>
                                         </div>
                                     @elseif($question->type == 'checkbox')
@@ -112,7 +112,7 @@
                                             <div class="flex items-center mr-4">
                                                 <input id="{{ $question->id }}-{{$option}}" type="checkbox" value="{{$option}}" name="ans{{ $question->id }}"
                                                     class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
-                                                    @checked(in_array($option,json_decode($answers[$loop->parent->index]->content))) 
+                                                    @checked($answers[$loop->parent->index] ? in_array($option,json_decode($answers[$loop->parent->index]->content)) : false) 
                                                     >
                                                 <label for="{{ $question->id }}-{{$option}}"
                                                     class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" >{{$option}}</label>
@@ -132,7 +132,7 @@
                                                 <div class="flex items-center mr-4">
                                                     <input id="{{ $question->id }}-{{$option}}" type="radio" value="{{$option}}" name="ans{{ $question->id }}"
                                                         class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
-                                                        @checked($answers[$loop->parent->index]->content==$option) @if($question->is_mandatory) required @endif >
+                                                        @checked($answers[$loop->parent->index]?->content==$option) @if($question->is_mandatory) required @endif >
                                                     <label for="{{ $question->id }}-{{$option}}"
                                                         class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" >{{$option}}</label>
                                                 </div>
