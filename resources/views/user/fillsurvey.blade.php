@@ -94,16 +94,29 @@
                                                     </div>
                                                 </div>
                                             @endforelse
-                                            <div class="flex items-center ">
-                                                <input id="{{ $question->id }}-extra" type="radio" value="" name="ans{{ $question->id }}"
-                                                        class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
-                                                        @checked(old($question->id)==$option) @if($question->is_mandatory) required @endif >
-                                                <label for="{{ $question->id }}-extra"
-                                                    class="mx-2 text-sm lg:text-md font-medium text-gray-900 dark:text-gray-300">Lainnya :  </label>
-                                                <input type="text"  id="{{ $question->id }}-extra"
-                                                class="ml-2 style-input bg-gray-50 h-8 w-[90%]  md:w-[25%]" placeholder="" 
-                                                value="{{old($question->id)}}"/>
-                                            </div>
+                                            @if(!empty($option))
+                                                <div class="flex items-center ">
+                                                    <input id="{{ $question->id }}-extra" type="radio" value="" name="ans{{ $question->id }}"
+                                                            class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
+                                                            @checked(old($question->id)==$option) @if($question->is_mandatory) required @endif >
+                                                    <label for="{{ $question->id }}-extra"
+                                                        class="mx-2 text-sm lg:text-md font-medium text-gray-900 dark:text-gray-300">Lainnya :  </label>
+                                                    <input type="text"  id="{{ $question->id }}-extra"
+                                                    class="ml-2 style-input bg-gray-50 h-8 w-[90%]  md:w-[25%]" placeholder="" 
+                                                    value="{{old($question->id)}}"/>
+                                                </div>
+                                            @else
+                                                <div class="flex items-center ">
+                                                    <input id="{{ $question->id }}-extra" type="radio" value="" name="ans{{ $question->id }}"
+                                                            class="w-4 h-4 text-slate-600 bg-gray-100 border-gray-300 focus:ring-slate-500 dark:focus:ring-slate-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
+                                                            @if($question->is_mandatory) required @endif >
+                                                    <label for="{{ $question->id }}-extra"
+                                                        class="mx-2 text-sm lg:text-md font-medium text-gray-900 dark:text-gray-300">Lainnya :  </label>
+                                                    <input type="text"  id="{{ $question->id }}-extra"
+                                                    class="ml-2 style-input bg-gray-50 h-8 w-[90%]  md:w-[25%]" placeholder="" 
+                                                    value="{{old($question->id)}}"/>
+                                                </div>
+                                            @endif
                                         </div>
                                     @elseif($question->type == 'checkbox')
                                         <div class="@if($question->is_mandatory) checkbox-required @endif ">
