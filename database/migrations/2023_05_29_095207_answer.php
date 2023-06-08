@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigInteger('id_submit');
             $table->bigInteger('id_survey');
             $table->bigInteger('id_question');
-            $table->text('content');
+            $table->text('content')->nullable();
         });
     }
 
