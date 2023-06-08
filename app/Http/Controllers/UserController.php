@@ -10,9 +10,13 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function landingPage(){
+        return view('landingPage');
+    }
     public function dashboardPage()
     {
-        return view('user.dashboard');
+        $sum_survey=Survey::all()->count();
+        return view('user.dashboard',["countData"=>[$sum_survey]]);
     }
 
     public function logout(Request $request)

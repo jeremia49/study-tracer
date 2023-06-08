@@ -7,13 +7,17 @@ use App\Models\Question;
 use App\Models\SubmitHistory;
 use App\Models\Survey;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
     public function dashboardPage()
     {
-        return view('admin.dashboard');
+        $sum_survey=Survey::All()->count();
+        $sum_responden=User::where('role','responden')->count();
+        $sum_question=Question::All()->count();
+        return view('admin.dashboard',["sumData"=>[$sum_survey,$sum_responden,$sum_question]]);
     }
 
     public function logout(Request $request)

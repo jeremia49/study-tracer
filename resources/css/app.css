@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.pattern1{
+  background-image: url("../../public/img/unimed.svg");
+  /* background-image: url("../../public/img/unimed.svg"); */
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
 
 @layer components{
     .d-message-error{
@@ -262,3 +269,115 @@
       background: #04b370;
     }
   }
+
+  
+.btn{
+  @apply bg-first-bg-c-btn  text-base text-first-c-text px-2 py-4 rounded-lg relative font-semibold after:transition-all after:duration-500 after:ease-in-out after:absolute after:top-0 after:left-0 after:h-[100%]  after:w-0  after:rounded-lg  hover:after:bg-black after:opacity-40 hover:after:w-[100%] ;
+}
+.handle-high{
+  @apply mt-2;
+}
+.header-fix{
+  @apply mb-1;
+}
+.first-title-bg{
+  @apply p-4 bg-emerald-400 mx-4 rounded-t-full rounded-br-full font-semibold text-white transition-all hover:rounded-b-full hover:rounded-br-none cursor-pointer duration-[400ms] tracking-wider;
+}
+
+@layer components{
+
+  .navbar-fixed{
+      @apply fixed  z-[9999] bg-white shadow-lg top-0 py-5 mb-5 ;
+      backdrop-filter:blur(10px);
+  }
+  
+  .animation-header{
+      @apply transition-all duration-300 ease-in-out;
+  }
+  .home-navbar-fixed{
+      @apply -mt-[4.1rem] lg:pt-0;
+      /* @apply mt-96 !important; */
+  }
+  .backdrop-f{
+      backdrop-filter:blur(10px);
+  }
+  .humberger-line{
+      @apply w-[30px] h-[2px] my-2 block bg-black rounded-lg;
+  }
+  .humberger{
+      @apply transition-transform duration-200 ease-linear ;
+  }
+  .humberger-active{
+      @apply fixed top-6 right-4  z-50 md:right-7; 
+  }
+  .humberger-active>span:nth-child(1)
+  {
+   @apply rotate-45 origin-top-left;
+  }
+  .humberger-active>span:nth-child(2)
+  {
+   @apply scale-0;
+  }
+  .humberger-active>span:nth-child(3)
+  {
+   @apply -rotate-45 origin-bottom-left;
+  }
+  .nav-sidebar{
+      @apply backdrop-blur-xl fixed  h-[100vh] top-0 right-0 bg-white w-[50vw] p-4 z-50  lg:static lg:w-full lg:h-full lg:p-0 lg:bg-transparent; 
+      
+  }
+  nav::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      right: 100%;
+      @apply blur-lg bg-white/30 w-full h-full -z-10;
+      
+  }
+  .nav-sidebar>a{
+      @apply font-bold text-base tracking-wider;
+  }
+ .nav-sidebar ul{
+  @apply pt-12 lg:py-0;
+ }
+  .nav-sidebar ul li{
+      @apply py-2 lg:py-0;
+  }
+  .nav-sidebar ul li a {
+      @apply text-first-size-t font-medium;
+  }
+ 
+  .bg-image{
+      background-image: url("../../public/img/unimed.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      @apply h-[34vh] w-full -right-2;
+  }
+  .bg-image2{
+      background-image: url("../../public/img/concept3.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      /* transform: scale(.9); */
+      @apply h-[34vh] w-full -right-2;
+  }
+  .avatar1{
+      background-image: url("/img/avatar1.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      @apply h-[80px] w-[80px] ;
+  }
+  .swiper-pagination{
+      bottom: 0 !important;
+  }
+  .active-link{
+      @apply after:absolute after:content-[''] after:top-5 after:w-0 after:bg-first-bg-c after:left-0 after:h-1 after:rounded-full hover:after:w-full after:transition-all after:duration-300 after:ease-linear hover:text-first-bg-c;
+  }
+  /* here animation bubble */
+  .animate-buble{
+      @apply relative  after:animate-bubble1 after:opacity-40 after:absolute after:-left-[6rem] after:rounded-full after:bottom-10 after:content-[''] after:w-40 after:h-40 after:bg-first-bg-c  before:animate-bubble1 before:opacity-40 before:absolute before:left-[40rem] before:rounded-full before:top-10 before:content-[''] before:w-20 before:h-20 before:bg-first-bg-c-btn ;
+  }
+ 
+}

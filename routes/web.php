@@ -72,6 +72,8 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('plogin');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('pregister');
 
+// landing Pages
+Route::get('/landingPage', [UserController::class, 'landingPage'])->name('index');
 Route::get('/', function(){
     return redirect()->route('login');
 });

@@ -1,6 +1,6 @@
 <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
     <aside id="sidebar"
-        class="fixed h-[100vh] top-0 left-0 z-20 flex-col flex-shrink-0 hidden w-64 lg:h-full pt-16 font-normal duration-75 lg:flex transition-width"
+        class="fixed h-[100vh] top-0 left-0 z-20 flex-col flex-shrink-0 hidden w-64 lg:h-full pt-16 font-normal duration-75 lg:flex  transition-transform animate-fadeIn"
         aria-label="Sidebar">
         <div
             class="relative h-[100vh] flex flex-col flex-1 min-h-0 pt-0 bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
