@@ -91,14 +91,14 @@ class UserController extends Controller
                     'id_submit' => $submission->id,
                     'id_survey' => $survey->id,
                     'id_question' => $id,
-                    'content' => $answers->has('ans' . $id) && !empty($answers['ans' . $id])  ?  json_encode($answers['ans' . $id]) : json_encode([]),
+                    'content' => $answers->has('ans' . $id) && (!empty($answers['ans' . $id])  || $answers['ans' . $id] == 0) ?  json_encode($answers['ans' . $id]) : json_encode([]),
                 ];
             } else {
                 $data = [
                     'id_submit' => $submission->id,
                     'id_survey' => $survey->id,
                     'id_question' => $id,
-                    'content' => $answers->has('ans' . $id) && !empty($answers['ans' . $id])  ? $answers['ans' . $id] : "",
+                    'content' => $answers->has('ans' . $id) && (!empty($answers['ans' . $id])  || $answers['ans' . $id] == 0)  ? $answers['ans' . $id] : "",
                 ];
             }
 
