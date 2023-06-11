@@ -14,7 +14,7 @@
         <div class="grid grid-cols-1 px-4  xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
             <div class="mb-4 col-span-full xl:mb-2">
                 <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
-                    Edit Survey {{$survey->nama}}
+                    Edit Survey {{ $survey->nama }}
                 </h1>
             </div>
             <!-- Right Content -->
@@ -35,18 +35,18 @@
 
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        
+
                         <!-- Modal body -->
                         <div class="p-6 space-y-6">
-                            <form action="{{ route('admin.surveyedit', ['id' => $survey->id]) }}" method="POST" class="w-full"
-                                autocomplete="off">
+                            <form action="{{ route('admin.surveyedit', ['id' => $survey->id]) }}" method="POST"
+                                class="w-full" autocomplete="off">
                                 @csrf
                                 <div class="mt-2">
                                     <label for="nama"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
                                         Survey</label>
                                     <input type="text" id="nama" name="nama" class="style-input bg-gray-50"
-                                        placeholder="" required value="{{old('nama', $survey->nama)}}" />
+                                        placeholder="" required value="{{ old('nama', $survey->nama) }}" />
                                     @error('nama')
                                         <span class="text-pink-500 text-sm">
                                             {{ $message }}
@@ -59,7 +59,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tahun
                                         Survey</label>
                                     <input type="number" id="periode" name="periode" class="style-input bg-gray-50"
-                                        placeholder="" required value="{{old('periode', $survey->periode)}}" />
+                                        placeholder="" required value="{{ old('periode', $survey->periode) }}" />
                                     @error('periode')
                                         <span class="text-pink-500 text-sm">
                                             {{ $message }}
@@ -85,20 +85,20 @@
                                 </div>
                                 <div class="mt-2">
                                     <label for="limit"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Limit Pengisian</label>
-    
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Limit
+                                        Pengisian</label>
+
                                     <input type="number" id="limit" name="limit" class="style-input bg-gray-50"
-                                        placeholder="" required value="{{old('limit', $survey->limit)}}" min="0" />
-    
+                                        placeholder="" required value="{{ old('limit', $survey->limit) }}" min="0" />
+
                                     @error('limit')
                                         <span class="text-pink-500 text-sm">
                                             {{ $message }}
                                         </span>
                                     @enderror
-                                </div>    
+                                </div>
                                 <div class="flex justify-end w-full">
-                                    <button id="submit" type="submit"
-                                        class="btn-submit btn-flash">
+                                    <button id="submit" type="submit" class="btn-submit btn-flash">
                                         Submit
                                     </button>
                                 </div>

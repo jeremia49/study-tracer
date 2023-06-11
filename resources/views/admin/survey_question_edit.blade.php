@@ -44,10 +44,11 @@
                                 @csrf
                                 <div class="mt-2  mb-8">
                                     <label for="question"
-                                        class="block mb-2 text-center  text-sm font-bold md:text-base text-gray-900 dark:text-white">Pilih Pertanyaan</label>
+                                        class="block mb-2 text-center  text-sm font-bold md:text-base text-gray-900 dark:text-white">Pilih
+                                        Pertanyaan</label>
                                     <input type="text" id="inputquestion" class="style-input bg-gray-50"
                                         placeholder="Masukkan Pertanyaan" multiple="multiple" />
-                                   
+
                                 </div>
                                 <ul class=" divide-y divide-gray-200 dark:divide-gray-700">
                                     <li class="pb-3 sm:pb-4 px-5">
@@ -72,12 +73,12 @@
                                 </ul>
 
 
-                               <div class="flex justify-end w-full mt-6">
+                                <div class="flex justify-end w-full mt-6">
                                     <button id="submit" type="submit"
-                                    class=" px-4 py-2 text-sm font-semibold md:text-base bg-emerald-500 hover:bg-emerald-700 rounded-md border-none text-white  inline-block btn-flash">
+                                        class=" px-4 py-2 text-sm font-semibold md:text-base bg-emerald-500 hover:bg-emerald-700 rounded-md border-none text-white  inline-block btn-flash">
                                         Simpan
                                     </button>
-                               </div>
+                                </div>
 
                             </form>
                         </div>

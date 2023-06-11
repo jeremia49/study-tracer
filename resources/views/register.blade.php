@@ -27,15 +27,20 @@
                         Welcome To Tracer Study
                     </h2>
                     <div class="px-4 lg:px-8 mt-4">
-                    <p class="text-center font-normal text-md lg:text-xl ">
-                            Dalam rangka pelaksanaan Program Tracer Study, kami meminta kesediaan Bapak/ Ibu/Mas/Mbak untuk mengisi survey/ kuesioner secara online pada form berikut.
-                           
+                        <p class="text-center font-normal text-md lg:text-xl ">
+                            Dalam rangka pelaksanaan Program Tracer Study, kami meminta kesediaan Bapak/ Ibu/Mas/Mbak
+                            untuk mengisi survey/ kuesioner secara online pada form berikut.
+
                         </p>
                         <p class="text-center font-normal text-md lg:text-xl my-4">
-                        Hasil Tracer Study akan digunakan untuk berbagai dokumen akreditasi (BAN-PT, AUN, ABET, IABEE), SIP MONEV, laporan SPMI, World Class University, KONKIN DIKTI dan pemeringkatan Perguruan Tinggi, selain itu juga untuk mengetahui relevansi pendidikan tinggi terhadap kebutuhan dunia kerja, dan dapat digunakan sebagai evaluasi proses pendidikan di ITS.
+                            Hasil Tracer Study akan digunakan untuk berbagai dokumen akreditasi (BAN-PT, AUN, ABET,
+                            IABEE), SIP MONEV, laporan SPMI, World Class University, KONKIN DIKTI dan pemeringkatan
+                            Perguruan Tinggi, selain itu juga untuk mengetahui relevansi pendidikan tinggi terhadap
+                            kebutuhan dunia kerja, dan dapat digunakan sebagai evaluasi proses pendidikan di UNIMED.
                         </p>
                         <p class="text-center font-normal text-md lg:text-xl ">
-                        Mengingat betapa pentingnya Hasil Tracer Study bagi kredibilitas ITS, kami berharap Bapak/Ibu/Mas/Mbak bersedia meluangkan waktunya untuk mengisi kuesioner tersebut di atas.
+                            Mengingat betapa pentingnya Hasil Tracer Study bagi kredibilitas UNIMED, kami berharap
+                            Bapak/Ibu/Mas/Mbak bersedia meluangkan waktunya untuk mengisi kuesioner tersebut di atas.
                             Terima kasih sebelumnya atas kesediaan untuk mengisi survey ini.
                         </p>
                     </div>
