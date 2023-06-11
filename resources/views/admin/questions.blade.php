@@ -335,11 +335,8 @@
 
 @push('scripts')
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="/js/sidebar.js"></script>
     <script src="/js/dark-mode.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/datepicker.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script>
         var ERRORCREATEQUESTION = false;
         @if ($errors->createQuestion->any())
