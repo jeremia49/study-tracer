@@ -88,7 +88,7 @@
                                     {{ count(json_decode($survey->questions)) }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $survey->limit }}
+                                    {{ $survey->limit == '0' ? 'Unlimited' : $survey->limit }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $survey->is_active == '1' ? 'Aktif' : 'Tidak Aktif' }}
