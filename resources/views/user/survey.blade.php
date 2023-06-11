@@ -18,7 +18,7 @@
                 </h1>
             </div>
             <!-- Right Content -->
-            <div class="col-span-full bg-white rounded-lg">
+            <div class="col-span-full bg-white dark:bg-gray-800 rounded-lg">
                 @if (session('success'))
                     <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
                         role="alert">
