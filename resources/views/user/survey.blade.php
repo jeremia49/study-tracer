@@ -101,7 +101,7 @@
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center"
                                         colspan="5">
-                                        Untuk saat ini, tidak ada survey yang tersedia
+                                        Untuk saat ini, tidak ada survey yang tersedia untuk anda
                                     </th>
                                 </tr>
                             @endforelse

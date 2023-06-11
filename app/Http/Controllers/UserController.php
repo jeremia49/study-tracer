@@ -7,6 +7,7 @@ use App\Models\Question;
 use App\Models\SubmitHistory;
 use App\Models\Survey;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -28,9 +29,15 @@ class UserController extends Controller
 
     public function surveyPage()
     {
-        $surveys = Survey::where('is_active', 1)
-            ->orderBy('periode')
-            ->get();
+        $surveys = DB::table('surveys AS s')
+        ->select('*')
+        ->where('is_active',1)
+        ->whereRaw('(
+            `s`.`limit` = 0 OR `s`.`limit` > (
+            SELECT COUNT(`id_survey`) FROM `submithistory` WHERE `id_user` = ? AND `id_survey` = `s`.`id`
+            ))', [auth()->user()->id])
+        ->get();
+
         return view('user.survey', [
             'surveys' => $surveys,
         ]);
@@ -39,8 +46,20 @@ class UserController extends Controller
     public function fillSurvey(int $id)
     {
         $survey = Survey::find($id);
-        $questions_id = json_decode($survey->questions);
+        if($survey->limit != 0){
+            $fillCount = DB::table('submithistory')
+            ->where('id_user',auth()->user()->id )
+            ->where('id_survey', $id)
+            ->count();
 
+            if($fillCount > $survey->limit){
+                return redirect()
+                ->route('user.survey')
+                ->with('error', 'Max fill limit reached !');
+            }
+        }
+        
+        $questions_id = json_decode($survey->questions);
         $questions = collect(Question::findMany($questions_id));
 
         $sortedq = [];
@@ -53,7 +72,6 @@ class UserController extends Controller
             array_push($sortedq, $question);
         }
 
-        // $sorted_q =
         return view('user.fillsurvey', [
             'survey' => $survey,
             'questions' => $sortedq,
@@ -63,6 +81,20 @@ class UserController extends Controller
     public function submitSurvey(int $id, Request $request)
     {
         $survey = Survey::find($id);
+        
+        if($survey->limit != 0){
+            $fillCount = DB::table('submithistory')
+            ->where('id_user',auth()->user()->id )
+            ->where('id_survey', $id)
+            ->count();
+
+            if($fillCount > $survey->limit){
+                return redirect()
+                ->route('user.survey')
+                ->with('error', 'Max fill limit reached !');
+            }
+        }
+
         $questions_id = json_decode($survey->questions);
         $questions = collect(Question::findMany($questions_id));
 

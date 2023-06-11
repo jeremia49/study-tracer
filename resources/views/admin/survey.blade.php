@@ -61,6 +61,9 @@
                                     Banyak Pertanyaan
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    Limit per User
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Status
                                 </th>
                                 <th scope="col" class=" rounded-tr-lg  px-6 py-3">
@@ -79,6 +82,9 @@
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ count(json_decode($survey->questions)) }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $survey->limit }}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ $survey->is_active == '1' ? 'Aktif' : 'Tidak Aktif' }}
@@ -253,6 +259,20 @@
                                 </select>
 
                                 @error('is_active')
+                                    <span class="text-pink-500 text-sm">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mt-2">
+                                <label for="limit"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Limit Pengisian</label>
+
+                                <input type="number" id="limit" name="limit" class="style-input bg-gray-50"
+                                    placeholder="" required value="{{ old('limit') }}" min="0" />
+
+                                @error('limit')
                                     <span class="text-pink-500 text-sm">
                                         {{ $message }}
                                     </span>

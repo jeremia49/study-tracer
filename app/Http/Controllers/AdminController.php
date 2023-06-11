@@ -37,8 +37,9 @@ class AdminController extends Controller
     public function createSurvey(Request $request){
         $validated = $request->validate([
             'nama' => ['required',],
-            'periode' => ['required', 'numeric'],
+            'periode' => ['required', 'numeric','integer'],
             'is_active' => ['required', 'in:0,1'],
+            'limit' => ['required', 'numeric','integer', 'gte:0',]
         ]);
 
         $validated['questions'] = json_encode([]);
@@ -56,6 +57,7 @@ class AdminController extends Controller
             'nama' => ['required',],
             'periode' => ['required', 'numeric'],
             'is_active' => ['required', 'in:0,1'],
+            'limit' => ['required', 'numeric','integer', 'gte:0',]
         ]);
         
         $survey = Survey::find($id);
@@ -63,6 +65,7 @@ class AdminController extends Controller
         $survey->nama = $validated['nama'];
         $survey->periode = $validated['periode'];
         $survey->is_active = $validated['is_active'];
+        $survey->limit = $validated['limit'];
 
         $check = $survey->save();
         if($check){

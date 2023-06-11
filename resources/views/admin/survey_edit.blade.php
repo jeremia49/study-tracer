@@ -83,6 +83,19 @@
                                         </span>
                                     @enderror
                                 </div>
+                                <div class="mt-2">
+                                    <label for="limit"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Limit Pengisian</label>
+    
+                                    <input type="number" id="limit" name="limit" class="style-input bg-gray-50"
+                                        placeholder="" required value="{{old('limit', $survey->limit)}}" min="0" />
+    
+                                    @error('limit')
+                                        <span class="text-pink-500 text-sm">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+                                </div>    
                                 <div class="flex justify-end w-full">
                                     <button id="submit" type="submit"
                                         class="btn-submit btn-flash">
