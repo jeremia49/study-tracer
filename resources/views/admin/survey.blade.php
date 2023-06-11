@@ -177,7 +177,7 @@
                                 <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center"
-                                        colspan="5">
+                                        colspan="6">
                                         Belum ada data
                                     </th>
                                 </tr>
