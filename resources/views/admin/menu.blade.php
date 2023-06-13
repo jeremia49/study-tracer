@@ -109,14 +109,63 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </button>
-                            <ul id="dropdown-layouts" class="hidden py-2 space-y-2">
+                            <ul id="dropdown-layouts" 
+                            @php
+                                $isActive=in_array($activeMenu, ["RESPONDEN","ADMIN"]);
+                            @endphp
+                            @class([
+                                'py-2',
+                                'space-y-2',
+                                'hidden' => !$isActive,
+                            ])
+                            >
                                 <li>
-                                    <a href="#"
-                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Responden</a>
+                                    <a href="{{route('admin.responden')}}"
+                                    @php 
+                                        $menu = "RESPONDEN";
+                                        $isActive = $activeMenu === $menu;
+                                    @endphp
+                                    @class([
+                                        'flex',
+                                        'items-center',
+                                        'bg-gray-100' => $isActive ,
+                                        'p-2',
+                                        'text-base',
+                                        'text-gray-900',
+                                        'transition',
+                                        'duration-75',
+                                        'pl-11 group',
+                                        'rounded-lg',
+                                        'hover:bg-gray-100',
+                                        'dark:bg-gray-300/50' => $isActive,
+                                        'dark:text-gray-200',
+                                        'dark:hover:bg-gray-700',
+                                    ])
+                                    >Responden</a>
                                 </li>
                                 <li>
-                                    <a href="#"
-                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Admin</a>
+                                    <a href="{{route('admin.admin')}}"
+                                    @php 
+                                        $menu = "ADMIN";
+                                        $isActive = $activeMenu === $menu;
+                                    @endphp
+                                    @class([
+                                        'flex',
+                                        'items-center',
+                                        'bg-gray-100' => $isActive ,
+                                        'p-2',
+                                        'text-base',
+                                        'text-gray-900',
+                                        'transition',
+                                        'duration-75',
+                                        'pl-11 group',
+                                        'rounded-lg',
+                                        'hover:bg-gray-100',
+                                        'dark:bg-gray-300/50' => $isActive,
+                                        'dark:text-gray-200',
+                                        'dark:hover:bg-gray-700',
+                                    ])
+                                    >Admin</a>
                                 </li>
                             </ul>
                         </li>

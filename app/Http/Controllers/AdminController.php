@@ -243,6 +243,20 @@ class AdminController extends Controller
         ]);
     }
 
+    public function respondenListPage(){
+        $users = User::where('role','responden')->get();
+        return view('admin.listuser', [
+            'users' => $users,
+        ]);
+    }
+    public function adminListPage(){
+        $users = User::where('role','admin')->get();
+        return view('admin.listadmin', [
+            'users' => $users,
+        ]);
+    }
+
+
     
     
     

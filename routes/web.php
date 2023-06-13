@@ -60,7 +60,10 @@ Route::group([
     Route::get('/submissionsPage/{id}', [AdminController::class, 'submissionsPage'])->name('submissions');
     Route::get('/answers/{id}', [AdminController::class, 'answerPage'])->name('answers');
     
+    Route::get('/listResponden', [AdminController::class, 'respondenListPage'])->name('responden');
+    Route::get('/listAdmin', [AdminController::class, 'adminListPage'])->name('admin');
     
+
     Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 });
 
