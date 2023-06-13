@@ -1,5 +1,5 @@
 @php
-    $activeMenu = 'RESPONDEN';
+    $activeMenu = 'ADMIN';
 @endphp
 
 @extends('admin.template')
